@@ -2,10 +2,12 @@
 {% if disallowed_sites %}
 <div class="panel">
     <div class="help-block help-warning">
-        <h1>
+        <h1 style="color:hsl(var(--w-color-grey-500-hue))">
           {% translate 'WARNING: Misconfigured Wagtail Sites' %}
         </h1>
-        <p>{% translate 'Misconfigured Wagtail Sites lead to unexpected behaviour and failing features. Please fix the misconfigured sites.' %}</p>
+        <p>
+          {% translate 'Misconfigured Wagtail Sites lead to unexpected behaviour and failing features. Please fix the misconfigured sites.' %}
+        </p>
         <p><strong>{% translate 'Allowed Sites:' %}</strong></p>
         <ul>
           {% for site in allowed_sites %}
