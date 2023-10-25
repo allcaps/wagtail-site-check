@@ -12,7 +12,7 @@ When a Wagtail Site is misconfigured, developers like to be notified. This way, 
 Install the package with pip:
 
 ```bash
-python -m pip install wagtailsitecheck
+python -m pip install wagtail-site-check
 ```
 
 Add the app to your `INSTALLED_APPS`:

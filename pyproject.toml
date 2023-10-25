@@ -55,6 +55,14 @@ testing = [
     "flake8-isort",
 ]
 
+[tool.hatch.build]
+include = [
+    "CHANGELOG.md",
+    "LICENSE",
+    "pyproject.toml",
+    "README.md",
+    "wagtailsitecheck/*",
+]
 
 [tool.pytest.ini_options]
 pythonpath="testproject"
