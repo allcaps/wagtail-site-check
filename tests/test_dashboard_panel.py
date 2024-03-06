@@ -21,7 +21,7 @@ def test_dashboard_panel(django_app):
     response = django_app.get(url, user=user)
     assert response.status_code == 200
     assert "WARNING: Misconfigured Wagtail Sites" in response
-    needle = f'<li>localhost:80 <a href="/admin/sites/{site.id}/">Edit</a></li>'
+    needle = f'<li>localhost:80<a href="/admin/sites/edit/{site.id}/">Edit</a></li>'
     assertInHTML(needle, str(response.content, encoding="utf-8"))
 
     # Fix the site
