@@ -1,6 +1,7 @@
 from django.core.management.base import BaseCommand
 from wagtail.models import Site
-from django.conf import settings
+
+from wagtailsitecheck.defaults import ALLOWED_WAGTAIL_SITES
 
 
 class Command(BaseCommand):
@@ -8,7 +9,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         for obj in Site.objects.all().order_by("hostname", "port"):
-            allowed = settings.ALLOWED_WAGTAIL_SITES
+            allowed = ALLOWED_WAGTAIL_SITES
             site = f"{obj.hostname}:{obj.port}"
             if site not in allowed:
                 question = f"{site} is not in ALLOWED_WAGTAIL_SITES. Specify a number to update the site."

@@ -2,10 +2,19 @@
 
 A Wagtail app to check the configuration of Wagtail Sites.
 
-Have you ever experienced a failing Wagtail preview? Searching for hours, only to find out a misconfiguration of Wagtail Site objects? 
-Misconfiguration of hostname and port happens often, goes unnoticed for a while, and leads to vague complaints.
+Common issues with misconfigured Wagtail Sites are:
+
+- Failing Wagtail preview.
+- Live button pointing to wrong site.
+- On multi-language sites wrong active language and/or wrong content displayed.
 
 When a Wagtail Site is misconfigured, developers like to be notified. This way, the issue can be addressed quickly. To scratch the itch, I created "Wagtail Site Check".
+
+Wagtail Site Check provides:
+
+- A management command to check for misconfigured sites.
+- A management command to fix misconfigured sites.
+- A notification panel to show a misconfigured site warning on the Wagtail admin dashboard.
 
 ## Installation
 
@@ -23,7 +32,9 @@ INSTALLED_APPS = [
 ]
 ```
 
-Add `ALLOWED_WAGTAIL_SITES` to your settings:
+Wagtail Site Check uses `ALLOWED_HOSTS` and  port `443` to create the list of allowed sites.
+
+Optional: add `ALLOWED_WAGTAIL_SITES` to your settings to be specific:
 
 ```python
 ALLOWED_WAGTAIL_SITES = [  
@@ -33,7 +44,7 @@ ALLOWED_WAGTAIL_SITES = [
 ]
 ```
 
-When working with multiple environments (DTAP), only specify the allowed wagtail sites for that environment. For example via *environment variables*. 
+When managing multiple environments (DTAP), only list approved Wagtail sites for each environment, typically through environment variables.
 
 ## Usage
 

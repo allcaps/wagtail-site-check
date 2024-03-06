@@ -1,8 +1,9 @@
-from wagtail.admin.ui.components import Component
-from django.conf import settings
 from typing import Any, Mapping
 
+from wagtail.admin.ui.components import Component
 from wagtail.models import Site
+
+from wagtailsitecheck.defaults import ALLOWED_WAGTAIL_SITES
 
 
 class SiteCheckNotificationPanel(Component):
@@ -14,10 +15,10 @@ class SiteCheckNotificationPanel(Component):
         disallowed_sites = []
         for obj in Site.objects.all().order_by("hostname", "port"):
             site = f"{obj.hostname}:{obj.port}"
-            if site not in settings.ALLOWED_WAGTAIL_SITES:
+            if site not in ALLOWED_WAGTAIL_SITES:
                 disallowed_sites.append((site, obj.pk))
 
         return {
-            "allowed_sites": settings.ALLOWED_WAGTAIL_SITES,
+            "allowed_sites": ALLOWED_WAGTAIL_SITES,
             "disallowed_sites": disallowed_sites,
         }
